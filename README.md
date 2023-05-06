@@ -13,5 +13,6 @@ Quote: "Download the GLUT 3.7 beta source distribution (shift Left in Netscape)"
 ## Plans
 There are none. But perhaps the idea to:
 - Make the code compile again (somehow)
+- Get rid of the original makefiles (use CMake instead)
 - Port it to "modern C++" and 
 - Perhaps use Qt as toolkit (I am sceptical about getting GLUT to work ;))
