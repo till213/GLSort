@@ -26,8 +26,9 @@
 #define SORTVISUALWIDGET_H
 
 #include <QOpenGLWidget>
+#include <QOpenGLFunctions_1_4>
 
-class SortVisualWidget : public QOpenGLWidget
+class SortVisualWidget : public QOpenGLWidget, protected QOpenGLFunctions_1_4
 {
     Q_OBJECT
 public:

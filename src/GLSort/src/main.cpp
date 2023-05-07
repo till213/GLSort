@@ -1,5 +1,5 @@
 /**
- * Sky Dolly - The Black Sheep for Your Flight Recordings
+ * GLSort - Sort algorithm visualisation
  *
  * Copyright (c) Oliver Knoll
  * All rights reserved.
@@ -22,6 +22,8 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
+#include <QSurfaceFormat>
+
 #include "MainWindow.h"
 
 #include <QApplication>
@@ -29,6 +31,13 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QSurfaceFormat fmt;
+    fmt.setDepthBufferSize(24);
+    fmt.setStencilBufferSize(8);
+    fmt.setVersion(1, 4);
+    QSurfaceFormat::setDefaultFormat(fmt);
+
     MainWindow w;
     w.show();
     return a.exec();

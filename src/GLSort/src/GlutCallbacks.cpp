@@ -200,15 +200,7 @@ void rightMenuCB(int value) {
 
 void reshapeCB (int w, int h) {
 
-  glViewport(0, 0, (GLsizei) w, (GLsizei) h);
-  glMatrixMode (GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(40.0, (GLdouble)w/(GLdouble)h, 1.0, (GLdouble) DBL_MAX);
-  glMatrixMode (GL_MODELVIEW);
 
-  // update window info structure
-  wininfo.width = w;
-  wininfo.height = h;
 
 }  // reshape()
 
@@ -358,29 +350,7 @@ void keyboardCB (unsigned char key, int x, int y) {
 
 } // keyboardCB()
 
-void displayCB (void) {
-  
-  GLdouble xEye,
-    yEye,
-    zEye;
 
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  
-  /* position the camera (the "eye") */
-  glLoadIdentity();
-  xEye = (GLdouble) (Camera::instance.dist * cos (INV_PI * (double) Camera::instance.theta) * sin (INV_PI * (double) Camera::instance.phi));
-  yEye = (GLdouble) (Camera::instance.dist * sin (INV_PI * (double) Camera::instance.theta)) + (GLdouble) array.getSize() / 2.0;
-  zEye = (GLdouble) (Camera::instance.dist * cos (INV_PI * (double) Camera::instance.theta) * cos (INV_PI * (double) Camera::instance.phi));
-  
-  gluLookAt (xEye, yEye, zEye,
-	     0.0, (GLdouble) array.getSize() / 2.0, 0.0,
-	     0.0, 1.0, 0.0); 
-
-  drawScene (array.getSize());
-  
-  //glutSwapBuffers();
-
-}  // displayCB()
 
 void mouseCB (int button, int state, int x, int y) {
 

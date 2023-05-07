@@ -1,5 +1,5 @@
 /**
- * Sky Dolly - The Black Sheep for Your Flight Recordings
+ * GLSort - Sort algorithm visualisation
  *
  * Copyright (c) Oliver Knoll
  * All rights reserved.
@@ -41,5 +41,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    void init() noexcept;
 };
 #endif // MAINWINDOW_H

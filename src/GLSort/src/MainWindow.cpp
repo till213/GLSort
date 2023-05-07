@@ -1,5 +1,5 @@
 /**
- * Sky Dolly - The Black Sheep for Your Flight Recordings
+ * GLSort - Sort algorithm visualisation
  *
  * Copyright (c) Oliver Knoll
  * All rights reserved.
@@ -22,6 +22,13 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
  * DEALINGS IN THE SOFTWARE.
  */
+#include <Kernel/Delay.h>
+#include <Kernel/Sort.h>
+#include <Kernel/Utils.h>
+#include "DelayBar.h"
+#include "Text.h"
+#include "TextScroller.h"
+#include "Timer.h"
 #include "MainWindow.h"
 #include "./ui_MainWindow.h"
 
@@ -35,5 +42,28 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::init() noexcept
+{
+    // start counting milliseconds
+    ftime (&oldTime);
+
+    initMyRand (131);
+
+    // delay in milliseconds
+    DelayDt = 100;
+
+    // no sort thread is currently running
+    isSortRunning = false;
+
+    // initialize delay bar state
+    initDelayBar();
+
+    // initialize text scroller settings
+    initTextScroller();
+
+    // initialize help text
+    initTextFile();
 }
 

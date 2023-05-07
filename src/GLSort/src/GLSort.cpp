@@ -83,44 +83,9 @@ static void init(void) {
 //  glutAddMenuEntry (exitMsg, RM_EXIT);
 //  glutAttachMenu (GLUT_RIGHT_BUTTON);
 
-  // update window info structure
-  wininfo.width  = WINWIDTH;
-  wininfo.height = WINHEIGHT;
 
-  // reset camera position
-  Camera::reset (0.0, 0.0, array.getSize() * 2.0, 0.0, 0.0);
- 
-  // GL settings
-  glShadeModel (GL_SMOOTH);
-  glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-  glClearColor (0.0, 0.0, 0.0, 0.0);
   
-  // enable depth test
-  glEnable (GL_DEPTH_TEST);
 
-  // enable backface culling
-  glEnable (GL_CULL_FACE);
-  glCullFace (GL_BACK);
-  
-  // start counting milliseconds
-  ftime (&oldTime);
-
-  initMyRand (131);
-
-  // delay in milliseconds
-  DelayDt = 100;
-
-  // no sort thread is currently running
-  isSortRunning = false;
-
-  // initialize delay bar state
-  initDelayBar();
-
-  // initialize text scroller settings
-  initTextScroller();
-
-  // initialize help text
-  initTextFile();
 
 }
 

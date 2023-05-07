@@ -1,4 +1,4 @@
-#include <QOpenGLFunctions>
+#include <QOpenGLFunctions_2_1>
 
 #include <stdio.h>	// for sprintf()
 
