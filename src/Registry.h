@@ -1,7 +1,7 @@
 #ifndef __REGISTRY_H_
 #define __REGISTRY_H_
 
-#include "sortAlgorithms/SortAlgorithm.h"
+#include "SortAlgorithms/SortAlgorithm.h"
 
 namespace Registry {
   

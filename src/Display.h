@@ -1,11 +1,11 @@
 #ifndef __DISPLAY_H_
 #define __DISPLAY_H_
 
-#include <GL/gl.h>
+#include <QOpenGLFunctions>
 
-GLdouble curTheta;   /* position of the camera */
-GLdouble curPhi;
-GLdouble curDist;
+extern GLdouble curTheta;   /* position of the camera */
+extern GLdouble curPhi;
+extern GLdouble curDist;
 
 void display (void);
 

@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include <stdio.h>	// for snprintf()
 
 #include "Stat.h"
@@ -77,8 +78,8 @@ void Array::resize (const int newSize) {
     ary.resize (newSize);
     refresh.resize (newSize);
   }
-  catch (bad_alloc) {
-    cerr << noMoreMemMsg << endl;
+  catch (std::bad_alloc) {
+    std::cerr << noMoreMemMsg << std::endl;
   }
   snprintf (sizeMsg, 32, "%s%d", newSizeMsg, newSize);
   writeScrollerLine (sizeMsg);
@@ -99,7 +100,7 @@ void Array::reset (void) {
 
 void Array::copy (Array &src, Array &dst) {
 
-  vector<int>::iterator srcIter, dstIter;
+  std::vector<int>::iterator srcIter, dstIter;
 
   Stat::incCopy();
   srcIter = src.ary.begin();

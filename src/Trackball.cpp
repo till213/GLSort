@@ -98,7 +98,7 @@ vsub(const float *src1, const float *src2, float *dst)
 void
 vcopy(const float *v1, float *v2)
 {
-    register int i;
+    int i;
     for (i = 0 ; i < 3 ; i++)
         v2[i] = v1[i];
 }
@@ -334,4 +334,3 @@ build_rotmatrix(float m[4][4], float q[4])
     m[3][2] = 0.0;
     m[3][3] = 1.0;
 }
-

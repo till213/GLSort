@@ -9,8 +9,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# macOS: silence OpenGL deprecation warnings
+add_definitions(-DGL_SILENCE_DEPRECATION)
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets OpenGL OpenGLWidgets)
 
 set(PROJECT_SOURCES
     src/main.cpp
@@ -63,7 +66,12 @@ else()
     endif()
 endif()
 
-target_link_libraries(GLSort PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(GLSort
+    PRIVATE
+        Qt${QT_VERSION_MAJOR}::Widgets
+        Qt${QT_VERSION_MAJOR}::OpenGL
+        Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+)
 
 set_target_properties(GLSort PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

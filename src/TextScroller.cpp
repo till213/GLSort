@@ -1,4 +1,4 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
 #include <string.h>	// for strcpy()
 
 #include "Text.h"
@@ -186,9 +186,10 @@ void drawTextScroller (void) {
   GLdouble lineWidth;
 
   // set text font
-  setTextFont (GLUT_BITMAP_9_BY_15);
+  // TODO Replace text rendering
+  // setTextFont (GLUT_BITMAP_9_BY_15);
 
-  lineWidth = (GLdouble) MAX_MSG_LEN * glutBitmapWidth (getTextFont(), (int) ' ');
+  // lineWidth = (GLdouble) MAX_MSG_LEN * glutBitmapWidth (getTextFont(), (int) ' ');
   xStart = ((GLdouble) wininfo.width - lineWidth) / 2.0;
   yStart = (GLdouble) wininfo.height * 0.9;
 

@@ -1,20 +1,20 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
 #include <stdlib.h>
+#include <iostream>
 #include <dlfcn.h>	// for dlopen(), dlsym()
 #include <stdio.h>	// for snprintf()
 #include <sys/timeb.h>	// for ftime()
-
 
 #include "Array.h"
 #include "Camera.h"
 #include "Delay.h"
 #include "DelayBar.h"
-#include "dirWalk.h"
-#include "glutCallbacks.h"
+#include "DirWalk.h"
+#include "GlutCallbacks.h"
 #include "Registry.h"
 #include "Resources.h"
 #include "Sort.h"
-#include "sortAlgorithms/SortAlgorithm.h"
+#include "SortAlgorithms/SortAlgorithm.h"
 #include "Text.h"
 #include "TextScroller.h"
 #include "Time.h"
@@ -25,7 +25,6 @@
 // initial window size
 #define WINWIDTH 	512
 #define WINHEIGHT	512
-
 
 void registerAlgorithms (const char *fileName) {
 
@@ -39,23 +38,24 @@ void registerAlgorithms (const char *fileName) {
   snprintf (pluginPath, 255, "%s/%s", pluginDir, fileName);
 
   handle = dlopen (pluginPath, RTLD_NOW);
-  if (handle == NULL) {
-    cerr << dlerror() << endl;
-    cerr << "glSort: Could not open shared library: " << pluginPath << endl;
+  if (handle == nullptr) {
+    std::cerr << dlerror() << std::endl;
+      std::cerr << "glSort: Could not open shared library: " << pluginPath << std::endl;
     return;
   }
   
   createInstance = (SortAlgorithm *(*)(void)) dlsym (handle, "createInstance");
-  if ((error = dlerror()) != NULL) {
-    cerr << error << endl;
-    cerr << "glSort: Not a valid plugin: " << pluginPath << endl;
+  if ((error = dlerror()) != nullptr) {
+    std::cerr << error << std::endl;
+    std::cerr << "glSort: Not a valid plugin: " << pluginPath << std::endl;
     return;
   }
 
   // create an instance and register it
   instance = (*createInstance)();
   Registry::addItem (nRegistered, instance);
-  glutAddMenuEntry (instance->getName(), nRegistered);
+  // TODO Create a Qt menu instead
+  // glutAddMenuEntry (instance->getName(), nRegistered);
   nRegistered++;
 
 }  // registerAlgorithms()
@@ -63,25 +63,26 @@ void registerAlgorithms (const char *fileName) {
 
 static void init(void) {
   
+  // TODO Replace with Qt menus etc.
   // initialize right button menu
-  glutCreateMenu (rightMenuCB);
-  glutAddMenuEntry (arySectionMsg, RM_NONE);
-  glutAddMenuEntry (resetAryMsg, RM_RESETARRAY);
-  glutAddMenuEntry (randomizeAryMsg, RM_RANDOMORDER);
-  glutAddMenuEntry (reverseAryMsg, RM_REVERSEORDER);
-  glutAddMenuEntry (almostAryMsg, RM_ALMOSTSORTED);
-  glutAddMenuEntry ("Groesse verdoppeln", RM_DOUBLESIZE);
-  glutAddMenuEntry ("Groesse halbieren", RM_HALFSIZE);
-  glutAddMenuEntry (sortSectionMsg, RM_NONE);
+//  glutCreateMenu (rightMenuCB);
+//  glutAddMenuEntry (arySectionMsg, RM_NONE);
+//  glutAddMenuEntry (resetAryMsg, RM_RESETARRAY);
+//  glutAddMenuEntry (randomizeAryMsg, RM_RANDOMORDER);
+//  glutAddMenuEntry (reverseAryMsg, RM_REVERSEORDER);
+//  glutAddMenuEntry (almostAryMsg, RM_ALMOSTSORTED);
+//  glutAddMenuEntry ("Groesse verdoppeln", RM_DOUBLESIZE);
+//  glutAddMenuEntry ("Groesse halbieren", RM_HALFSIZE);
+//  glutAddMenuEntry (sortSectionMsg, RM_NONE);
   // initialize plugins and their menu entries
   dir::dirWalk (pluginDir, registerAlgorithms);
   // initialize the rest of menu entries
-  glutAddMenuEntry (miscMsg, RM_NONE);
-  glutAddMenuEntry (helpMsg, RM_HELP);
-  glutAddMenuEntry (infoMsg, RM_INFO);
-  glutAddMenuEntry (miscMsg, RM_NONE);
-  glutAddMenuEntry (exitMsg, RM_EXIT);
-  glutAttachMenu (GLUT_RIGHT_BUTTON);
+//  glutAddMenuEntry (miscMsg, RM_NONE);
+//  glutAddMenuEntry (helpMsg, RM_HELP);
+//  glutAddMenuEntry (infoMsg, RM_INFO);
+//  glutAddMenuEntry (miscMsg, RM_NONE);
+//  glutAddMenuEntry (exitMsg, RM_EXIT);
+//  glutAttachMenu (GLUT_RIGHT_BUTTON);
 
   // update window info structure
   wininfo.width  = WINWIDTH;
@@ -130,29 +131,29 @@ static void init(void) {
  *  Open window with initial window size, title bar, 
  *  RGBA display mode, and handle input events.
  */
-int main(int argc, char** argv) {
+//int main(int argc, char** argv) {
 
-  glutInit (&argc, argv);
-  glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-  glutInitWindowSize (WINWIDTH, WINHEIGHT);
-  glutCreateWindow (argv[0]);
-  glutSetWindowTitle (titleMsg);
-  init();
-  // glut callbacks (CB)
-  glutReshapeFunc (reshapeCB);
-  glutKeyboardFunc (keyboardCB);
-  glutSpecialFunc(specialCB);
-  glutDisplayFunc (displayCB);
-  glutIdleFunc (animateCB);
-  glutMouseFunc(mouseCB);
-  glutMotionFunc(mouseMotionCB);
+//  glutInit (&argc, argv);
+//  glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+//  glutInitWindowSize (WINWIDTH, WINHEIGHT);
+//  glutCreateWindow (argv[0]);
+//  glutSetWindowTitle (titleMsg);
+//  init();
+//  // glut callbacks (CB)
+//  glutReshapeFunc (reshapeCB);
+//  glutKeyboardFunc (keyboardCB);
+//  glutSpecialFunc(specialCB);
+//  glutDisplayFunc (displayCB);
+//  glutIdleFunc (animateCB);
+//  glutMouseFunc(mouseCB);
+//  glutMotionFunc(mouseMotionCB);
 
-  // write welcome message
-  writeScrollerLine (welcome1Msg);
-  writeScrollerLine (welcome2Msg);
-  writeScrollerLine (welcome3Msg);
+//  // write welcome message
+//  writeScrollerLine (welcome1Msg);
+//  writeScrollerLine (welcome2Msg);
+//  writeScrollerLine (welcome3Msg);
 
-  glutMainLoop();
-  return 0;
+//  glutMainLoop();
+//  return 0;
 
-}
+//}

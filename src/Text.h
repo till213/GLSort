@@ -1,4 +1,4 @@
-#include <GL/gl.h>
+#include <QOpenGLFunctions>
 
 /** the maximum length of a filename (incl. terminating '\0') */
 #define MAX_FILENAME_LEN	64

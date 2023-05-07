@@ -20,14 +20,14 @@ static void foo (const char *fileName) {
 
   cerr << "Registering plugin: " << pluginPath << endl;
   handle = dlopen (pluginPath, RTLD_LAZY);
-  if (handle == NULL) {
+  if (handle == nullptr) {
     cerr << dlerror() << endl;
     cerr << "Could not open shared library: " << pluginPath << endl;
     return;
   }
   
   createInstance = (SortAlgorithm *(*)(void)) dlsym (handle, "createInstance");
-  if ((error = dlerror()) != NULL) {
+  if ((error = dlerror()) != nullptr) {
     cerr << error << endl;
     cerr << "Not a valid plugin: " << pluginPath << endl;
     return;

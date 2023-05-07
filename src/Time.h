@@ -1,7 +1,7 @@
 #ifndef __TIME_H_
 #define __TIME_H_
 
-#include <GL/gl.h>
+#include <QOpenGLFunctions>
 #include <sys/timeb.h>		// for definition of timeb
 
 

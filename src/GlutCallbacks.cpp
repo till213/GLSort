@@ -1,5 +1,8 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
+#include <OpenGL/glu.h>
+
 #include <pthread.h>
+#include <iostream>
 #include <float.h>	// for DBL_MAX
 #include <math.h>	// for fabs(), copysign()
 
@@ -15,7 +18,7 @@
 #include "Version.h"
 #include "Visual.h"
 #include "WinInfo.h"
-#include "glutCallbacks.h"
+#include "GlutCallbacks.h"
 
 #ifndef PI
 #define PI 3.141592
@@ -185,9 +188,9 @@ void rightMenuCB(int value) {
       isSortRunning = true;
       algorithmID = value;
      
-      cerr << "start sorting \n";
+      std::cerr << "start sorting \n";
       // create a new sorting thread;
-      pthread_create (&sortThread, NULL, &sort, (void *) &algorithmID);
+      pthread_create (&sortThread, nullptr, &sort, (void *) &algorithmID);
     }
     break;
     
@@ -213,35 +216,36 @@ void specialCB (int key, int x, int y) {
 
   switch (key) {
 
-  case GLUT_KEY_LEFT:
-    {
-      Camera::instance.phiInc -= 0.001;
-    }
-    break;
+      // TODO Replace with QAction or similar
+//  case GLUT_KEY_LEFT:
+//    {
+//      Camera::instance.phiInc -= 0.001;
+//    }
+//    break;
 
-  case GLUT_KEY_RIGHT:
-    {
-      Camera::instance.phiInc += 0.001;
-    }
-    break;
+//  case GLUT_KEY_RIGHT:
+//    {
+//      Camera::instance.phiInc += 0.001;
+//    }
+//    break;
 
-  case GLUT_KEY_UP:
-    {
-      Camera::instance.thetaInc+= 0.001;
-    }
-    break;
+//  case GLUT_KEY_UP:
+//    {
+//      Camera::instance.thetaInc+= 0.001;
+//    }
+//    break;
  
-  case GLUT_KEY_DOWN:
-    {
-      Camera::instance.thetaInc -= 0.001;
-    }
-    break;
+//  case GLUT_KEY_DOWN:
+//    {
+//      Camera::instance.thetaInc -= 0.001;
+//    }
+//    break;
 
-  case GLUT_KEY_F1:
-    {
-      showHelp();
-    }
-    break;
+//  case GLUT_KEY_F1:
+//    {
+//      showHelp();
+//    }
+//    break;
 
   default:
     break;
@@ -374,7 +378,7 @@ void displayCB (void) {
 
   drawScene (array.getSize());
   
-  glutSwapBuffers();
+  //glutSwapBuffers();
 
 }  // displayCB()
 
@@ -383,32 +387,33 @@ void mouseCB (int button, int state, int x, int y) {
   GLdouble diff;
   GLdouble tol;
 
-  if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
+  // TODO Replace with Qt mouse events
+//  if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 
-    glutSetCursor (GLUT_CURSOR_CYCLE);
-    isLeftButtonClicked = true;
+//    glutSetCursor (GLUT_CURSOR_CYCLE);
+//    isLeftButtonClicked = true;
 
-    // calculate left-right motion
-    diff = (GLdouble) (wininfo.width / 2 - x);
-    tol  = (GLdouble) wininfo.width * 0.1;	// 10% tolerance
+//    // calculate left-right motion
+//    diff = (GLdouble) (wininfo.width / 2 - x);
+//    tol  = (GLdouble) wininfo.width * 0.1;	// 10% tolerance
     
-    if (fabs (diff) > tol) {
-      Camera::instance.phiInc = -(diff - copysign (tol, diff)) / (GLdouble) wininfo.width / 2.0;
-    }
+//    if (fabs (diff) > tol) {
+//      Camera::instance.phiInc = -(diff - copysign (tol, diff)) / (GLdouble) wininfo.width / 2.0;
+//    }
 
-    // calculate up-down motion
-    diff = (GLdouble) (wininfo.height / 2 - y);
-    tol  = (GLdouble) wininfo.height * 0.1;	// 10% tolerance
+//    // calculate up-down motion
+//    diff = (GLdouble) (wininfo.height / 2 - y);
+//    tol  = (GLdouble) wininfo.height * 0.1;	// 10% tolerance
     
-    if (fabs (diff) > tol) {
-      Camera::instance.thetaInc = (diff - copysign (tol, diff)) / (GLdouble) wininfo.height / 2.0;
-    }
+//    if (fabs (diff) > tol) {
+//      Camera::instance.thetaInc = (diff - copysign (tol, diff)) / (GLdouble) wininfo.height / 2.0;
+//    }
 
-  }
-  else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
-    glutSetCursor (GLUT_CURSOR_LEFT_ARROW);
-    isLeftButtonClicked = false;
-  }
+//  }
+//  else if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
+//    glutSetCursor (GLUT_CURSOR_LEFT_ARROW);
+//    isLeftButtonClicked = false;
+//  }
 
 }  // mouseCB()
 
@@ -476,6 +481,6 @@ void animateCB (void) {
 
   /* start counting again */
   ftime (&oldTime);
-  glutPostRedisplay();
+  //glutPostRedisplay();
 
 }  // animateCB

@@ -1,11 +1,11 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
+
 #include <stdio.h>		// for fopen()...
 #include <string.h>		// for strncpy()
-#include <iostream.h>		// for cerr
+#include <iostream>		// for cerr
 
 #include "WinInfo.h"
 #include "Time.h"
-#include "Utils.h"		// for definition of bool
 #include "Text.h"
 
 typedef enum {
@@ -18,7 +18,7 @@ typedef enum {
 // global
 // ------
 
-// the file we have to draw - if set to NULL, the file
+// the file we have to draw - if set to nullptr, the file
 // could not be opened and therefore a corresponding message should be shown
 static FILE *file;
 
@@ -43,7 +43,7 @@ static void *curFont;
 // -----
 
 // returns a pointer to the next line of the textfile given by global 'fd'. It returns
-// NULL either if the end of the text file has been reached. 'file' must be a valid
+// nullptr either if the end of the text file has been reached. 'file' must be a valid
 // file stream
 static char *getNextLine (void) {
 	
@@ -65,7 +65,7 @@ static char *getNextLine (void) {
     return &line[0];
   }
   else {
-    return NULL;
+    return nullptr;
   }
 	
 }  // getNextLine()
@@ -85,7 +85,7 @@ static void draw (void) {
   // make backup of current projection matrix
   glPushMatrix(); 
   glLoadIdentity();
-  gluOrtho2D (0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height);
+  glOrtho(0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height, -1, 1);
 
   glMatrixMode (GL_MODELVIEW);
   // make backup of current modelview matrix
@@ -126,13 +126,14 @@ static void draw (void) {
   glEnable (GL_DEPTH_TEST);
 	
   // set text font
-  setTextFont (GLUT_BITMAP_9_BY_15);
+  // TODO Replace font rendering
+  //setTextFont (GLUT_BITMAP_9_BY_15);
 	
   offset = 0.0;
-  if (file != NULL) {
+  if (file != nullptr) {
 		
     line = getNextLine();    
-    while (line != NULL) {
+    while (line != nullptr) {
 			
       writeText (line, 0.05 * (GLdouble) wininfo.width, 0.75 * (GLdouble) wininfo.height - offset, (GLdouble) alpha);
       offset += 16.0;
@@ -175,7 +176,7 @@ void writeText (const char *string, const GLdouble x, const GLdouble y, const GL
   // make backup of current projection matrix
   glPushMatrix();
   glLoadIdentity();
-  gluOrtho2D (0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height);
+  glOrtho(0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height, -1, 1);
 
 #endif
 
@@ -192,7 +193,8 @@ void writeText (const char *string, const GLdouble x, const GLdouble y, const GL
   glRasterPos2f (x, y);
   len = (int) strlen(string);
   for (i = 0; i < len; i++) {
-    glutBitmapCharacter(curFont, string[i]);
+    // TODO REPLACE text rendering
+    // glutBitmapCharacter(curFont, string[i]);
   }
 
   // set GL switches to default values
@@ -206,9 +208,6 @@ void writeText (const char *string, const GLdouble x, const GLdouble y, const GL
   glMatrixMode (GL_MODELVIEW);
   // restore current modelview matrix
   glPopMatrix();
-
-  
-	
 }
 
 void initTextFile(void) {
@@ -226,7 +225,8 @@ void initTextFile(void) {
 void drawTextFile (void) {
   
   // set text font
-  setTextFont (GLUT_BITMAP_8_BY_13);	
+  // TODO Replace font rendering
+  // setTextFont (GLUT_BITMAP_8_BY_13);
 	
   switch (state) {
 		
@@ -266,10 +266,10 @@ void drawTextFile (void) {
 	alpha = 0.0;
 				
 	// CLOSE the file
-	if (file != NULL) {
+	if (file != nullptr) {
 	  fclose (file);
 	}
-	file = NULL;
+	file = nullptr;
 	curFileName[0] = '\0';
 
       }
@@ -298,7 +298,7 @@ void toggleTextFile (const char *fileName) {
 			
       // OPEN the file
       // note: no error checking here, since the error is catched
-      // later on in case 'file' is set to NULL
+      // later on in case 'file' is set to nullptr
       file = fopen (fileName, "r");
       strncpy (curFileName, fileName, MAX_FILENAME_LEN - 1); 
 			
@@ -333,7 +333,7 @@ void toggleTextFile (const char *fileName) {
 void changeTextFile (const char *fileName) {
   
   // only change text file if there is one currently showing
-  if (file != NULL) {
+  if (file != nullptr) {
     fclose (file);
     file = fopen (fileName, "r");
     strncpy (curFileName, fileName, MAX_FILENAME_LEN - 1);

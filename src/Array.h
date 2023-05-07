@@ -2,8 +2,11 @@
 #define __ARRAY_H_
 
 #include <vector>
-#include <GL/gl.h>
+#include <QOpenGLFunctions>
 
+// TODO Previously the size was hardcoded (in the original "glsort"), but
+// the Array implementation seems to allow for arbitrary array sizes
+#define ARRAYSIZE 32
 
 class Array {
 
@@ -27,8 +30,8 @@ class Array {
  private:
   friend void animateCB (void);				// needs access to refresh
   friend void drawArrayElement (const int elem);	// needs access to ary and refresh
-  vector<int> ary;
-  vector<GLfloat> refresh;
+  std::vector<int> ary;
+  std::vector<GLfloat> refresh;
 
 };
 

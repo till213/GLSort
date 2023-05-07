@@ -1,4 +1,4 @@
-#include <GL/gl.h>
+#include <QOpenGLFunctions>
 
 #include "Array.h"
 #include "DelayBar.h"

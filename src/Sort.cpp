@@ -1,10 +1,9 @@
 #include <pthread.h>
 
 #include "Array.h"
-#include "Display.h"
 #include "Registry.h"
 #include "Stat.h"
-#include "sortAlgorithms/SortAlgorithm.h"
+#include "SortAlgorithms/SortAlgorithm.h"
 #include "Sort.h"
 
 // global
@@ -16,7 +15,7 @@ void *sort (void *algorithmID) {
   SortAlgorithm *algorithm;
 
   // set cancelation type to immediate (asynchronous)
-  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, NULL);
+  pthread_setcanceltype (PTHREAD_CANCEL_ASYNCHRONOUS, nullptr);
 
   ID = *((int *)algorithmID);
   algorithm = Registry::getItem (ID);
@@ -26,6 +25,6 @@ void *sort (void *algorithmID) {
   Stat::show (algorithm->getName());
 
   isSortRunning = false;
-  return NULL;
+  return nullptr;
 
 }

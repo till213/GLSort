@@ -1,4 +1,5 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
+
 #include <stdio.h>	// for sprintf()
 
 #include "Delay.h"
@@ -48,7 +49,7 @@ static void draw (void) {
   // make backup of current projection matrix
   glPushMatrix(); 
   glLoadIdentity();
-  gluOrtho2D (0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height);
+  glOrtho(0.0, (GLdouble) wininfo.width, 0.0, (GLdouble) wininfo.height, -1, 1);
   
   glMatrixMode (GL_MODELVIEW);
   // make backup of current modelview matrix
@@ -153,7 +154,8 @@ void activateDelayBar (void) {
 void drawDelayBar (void) {
 
   // set text font
-  setTextFont (GLUT_BITMAP_8_BY_13);
+  // TODO Replace font rendering
+  // setTextFont (GLUT_BITMAP_8_BY_13);
 
   switch (state) {
 

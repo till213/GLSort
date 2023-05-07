@@ -12,12 +12,12 @@ void dir::dirWalk (const char *dirName, void (*fcn)(const char *)) {
   DIR *dir;
   dirent *dp;
     
-  if ((dir = opendir (dirName)) == NULL) {
+  if ((dir = opendir (dirName)) == nullptr) {
     cerr << "dirWalk: could not open the directory " << dirName << endl;
     return;
   }
   
-  while ((dp = readdir (dir)) != NULL) {
+  while ((dp = readdir (dir)) != nullptr) {
     if (strcmp (dp->d_name, ".") == 0 || strcmp (dp->d_name, "..") == 0) {
       // skip self and parent
       continue;

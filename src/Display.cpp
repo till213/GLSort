@@ -1,4 +1,5 @@
-#include <GL/glut.h>
+#include <QOpenGLFunctions>
+#include <OpenGL/glu.h>
 #include <math.h>
 
 #include "Array.h"
@@ -10,6 +11,10 @@
 #endif
 
 #define INV_PI PI/180.0
+
+GLdouble curTheta;   /* position of the camera */
+GLdouble curPhi;
+GLdouble curDist;
 
 void display(void) {
 
@@ -31,6 +36,6 @@ void display(void) {
    
   drawScene (ARRAYSIZE);
 
-  glutSwapBuffers();
+  //glutSwapBuffers();
 
 }
