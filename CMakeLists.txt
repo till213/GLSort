@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.16...3.23)
 include(CMakePrintHelpers)
 
 project(
-    GLSort
+    GLSortProject
     VERSION 0.1
     DESCRIPTION "Visualisation of various sort algorithms with OpenGL"
     HOMEPAGE_URL "https://github.com/till213/GLSort"

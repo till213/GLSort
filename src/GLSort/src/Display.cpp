@@ -1,5 +1,11 @@
+#include <QtGlobal>
+
 #include <QOpenGLFunctions>
+#ifdef __MACH__
+#include <OpenGL/glu.h>
+#else
 #include <GL/glu.h>
+#endif
 #include <math.h>
 
 #include <Kernel/Array.h>

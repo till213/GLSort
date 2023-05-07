@@ -53,9 +53,15 @@ target_link_libraries(GLSort
         Qt${QT_VERSION_MAJOR}::Widgets
         Qt${QT_VERSION_MAJOR}::OpenGL
         Qt${QT_VERSION_MAJOR}::OpenGLWidgets
-        -lGLU
         Sort::Kernel
 )
+
+if(${PLATFORM_IS_LINUX})
+    target_link_libraries(GLSort
+        PRIVATE
+            -lGLU
+    )
+endif()
 
 set_target_properties(GLSort PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
