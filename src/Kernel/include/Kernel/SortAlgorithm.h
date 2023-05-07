@@ -1,7 +1,7 @@
 #ifndef __SORTALGORITHM_H_
 #define __SORTALGORITHM_H_
 
-#include "../Array.h"
+#include "Array.h"
 
 class SortAlgorithm {
 
@@ -11,7 +11,6 @@ class SortAlgorithm {
 
   virtual void sort (Array *ary) = 0;
   virtual const char *getName (void) = 0;
-
 };
 
 #endif

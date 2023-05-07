@@ -1,6 +1,6 @@
-#include "../../Array.h"
-#include "../../Delay.h"
-#include "../SortAlgorithm.h"
+#include <Kernel/Array.h>
+#include <Kernel/Delay.h>
+#include <Kernel/SortAlgorithm.h>
 #include "BubbleSort.h"
 
 SortAlgorithm *createInstance (void) {

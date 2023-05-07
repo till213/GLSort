@@ -1,0 +1,9 @@
+Info
+----
+
+-- glSort --
+ein Programm zur Demonstration
+von bekannten Sortieralgorithmen.
+
+Autor: Oliver Knoll
+EMail: tknoll@iiic.ethz.ch

@@ -2,7 +2,7 @@
 #include <OpenGL/glu.h>
 #include <math.h>
 
-#include "Array.h"
+#include <Kernel/Array.h>
 #include "Visual.h"
 #include "Display.h"
 

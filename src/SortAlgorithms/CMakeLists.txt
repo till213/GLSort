@@ -1,1 +1,1 @@
-add_subdirectory(${CMAKE_SOURCE_DIR}/BubbleSort)
+add_subdirectory(${CMAKE_CURRENT_LIST_DIR}/BubbleSort)

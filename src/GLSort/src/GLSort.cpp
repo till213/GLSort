@@ -5,21 +5,20 @@
 #include <stdio.h>	// for snprintf()
 #include <sys/timeb.h>	// for ftime()
 
-#include "Array.h"
-#include "Camera.h"
-#include "Delay.h"
+#include <Kernel/Array.h>
+#include <Kernel/Camera.h>
+#include <Kernel/Delay.h>
+#include <Kernel/DirWalk.h>
+#include <Kernel/Registry.h>
+#include <Kernel/Sort.h>
+#include <Kernel/SortAlgorithm.h>
+#include <Kernel/Utils.h>
 #include "DelayBar.h"
-#include "DirWalk.h"
 #include "GlutCallbacks.h"
-#include "Registry.h"
 #include "Resources.h"
-#include "Sort.h"
-#include "SortAlgorithms/SortAlgorithm.h"
 #include "Text.h"
 #include "TextScroller.h"
 #include "Time.h"
-#include "Translation.h"
-#include "Utils.h"
 #include "WinInfo.h"
 
 // initial window size

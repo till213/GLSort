@@ -1,6 +1,6 @@
 #include <QOpenGLFunctions>
 
-#include "Array.h"
+#include <Kernel/Array.h>
 #include "DelayBar.h"
 #include "Text.h"
 #include "TextScroller.h"

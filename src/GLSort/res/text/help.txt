@@ -1,0 +1,16 @@
+Hilfe
+-----
+
+h oder F1           - Hilfe ein-/ausblenden
+i                   - Info ein-/ausblenden
+a oder Pfeil links  - Kamera nach links bewegen
+d oder Pfeil rechts - Kamera nach rechts bewegen
+w oder Pfeil hoch   - Kamera nach oben bewegen
+s oder Pfeil runter - Kamera nach unten bewegen
+- oder x            - wegzoomen
++ oder y            - heranzoomen
+<Leertaste>         - Kamerabewegung anhalten
+,                   - Verzoegerung verkleinern
+.                   - Verzoegerung vergroessern
+<rechte Maustaste>  - Sortiermenue anzeigen
+<Escape>            - Programm beenden

@@ -3,10 +3,7 @@
 #include <stdio.h>	// for snprintf()
 
 #include "Stat.h"
-#include "Translation.h"
-#include "TextScroller.h"
-#include "Utils.h"	// for random
-
+#include "Utils.h"
 #include "Array.h"
 
 // global
@@ -79,10 +76,10 @@ void Array::resize (const int newSize) {
     refresh.resize (newSize);
   }
   catch (std::bad_alloc) {
-    std::cerr << noMoreMemMsg << std::endl;
+    std::cerr << "Bad alloc" << std::endl;
   }
-  snprintf (sizeMsg, 32, "%s%d", newSizeMsg, newSize);
-  writeScrollerLine (sizeMsg);
+  snprintf (sizeMsg, 32, "%s%d", "Resized", newSize);
+  //writeScrollerLine (sizeMsg);
   reset();
 
 }  // resize()

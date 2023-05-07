@@ -2,7 +2,7 @@
 
 #include <stdio.h>	// for sprintf()
 
-#include "Delay.h"
+#include <Kernel/Delay.h>
 #include "Text.h"
 #include "Time.h"
 #include "WinInfo.h"

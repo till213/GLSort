@@ -4,7 +4,7 @@
 namespace Stat {
 
   void reset (void);
-  void show (const char *algorithmName);
+  //void show (const char *algorithmName);
   void incSwap (void);
   void incCopy (void);
   void incComp (void);

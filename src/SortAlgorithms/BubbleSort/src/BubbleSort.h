@@ -1,7 +1,8 @@
 #ifndef __BUBBLESORT_H_
 #define __BUBBLESORT_H_
 
-#include "../SortAlgorithm.h"
+#include <Kernel/Array.h>
+#include <Kernel/SortAlgorithm.h>
 
 class BubbleSort : public SortAlgorithm {
 
@@ -11,7 +12,6 @@ class BubbleSort : public SortAlgorithm {
 
   void sort (Array *ary);
   const char *getName (void);
-
 };
 
 /**

@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>	// for strcat(), strlen()
 
-#include "TextScroller.h"
-#include "Translation.h"
 #include "Stat.h"
 
 // local
@@ -23,39 +21,39 @@ void Stat::reset (void) {
 
 }  // resetStat()
 
-void Stat::show (const char *algorithmName) {
+//void Stat::show (const char *algorithmName) {
 
-  Message msg;
-  char num[8];
+//  Message msg;
+//  char num[8];
 
-  sprintf ((char *) msg, "-- %s --", algorithmName);
-  writeScrollerLine (msg);
+//  sprintf ((char *) msg, "-- %s --", algorithmName);
+//  writeScrollerLine (msg);
 
-  sprintf ((char *) msg, numCompMsg);
-  sprintf (num, "%d ", nComp);
-  strcat (msg, num);
+//  sprintf ((char *) msg, numCompMsg);
+//  sprintf (num, "%d ", nComp);
+//  strcat (msg, num);
   
-  sprintf ((char *) msg + strlen ((char *) msg), numSwapMsg);
-  sprintf (num, "%d ", nSwap);
-  strcat (msg, num);
+//  sprintf ((char *) msg + strlen ((char *) msg), numSwapMsg);
+//  sprintf (num, "%d ", nSwap);
+//  strcat (msg, num);
 
-  sprintf ((char *) msg + strlen ((char *) msg), numCopyMsg);
-  sprintf (num, "%d ", nCopy);
-  strcat (msg, num);
+//  sprintf ((char *) msg + strlen ((char *) msg), numCopyMsg);
+//  sprintf (num, "%d ", nCopy);
+//  strcat (msg, num);
   
-  writeScrollerLine (msg);
+//  writeScrollerLine (msg);
   
-  sprintf ((char *) msg, numSetMsg);
-  sprintf (num, "%d ", nSet);
-  strcat (msg, num);
+//  sprintf ((char *) msg, numSetMsg);
+//  sprintf (num, "%d ", nSet);
+//  strcat (msg, num);
 
-  sprintf ((char *) msg + strlen ((char *) msg), numGetMsg);
-  sprintf (num, "%d ", nGet);
-  strcat (msg, num);
+//  sprintf ((char *) msg + strlen ((char *) msg), numGetMsg);
+//  sprintf (num, "%d ", nGet);
+//  strcat (msg, num);
 
-  writeScrollerLine (msg);
+//  writeScrollerLine (msg);
 
-}  // showStat()
+//}  // showStat()
 
 void Stat::incSwap (void) {
   nSwap++;
