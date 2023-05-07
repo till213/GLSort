@@ -1,6 +1,7 @@
 #include <sys/types.h>	// POSIX access to directories
 #include <dirent.h>
 #include <iostream>	// for cerr
+#include <string.h> // for strcmp
 
 #include "DirWalk.h"
 
@@ -18,7 +19,7 @@ void dir::dirWalk (const char *dirName, void (*fcn)(const char *)) {
     }
 
     while ((dp = readdir (dir)) != nullptr) {
-        if (std::strcmp (dp->d_name, ".") == 0 || std::strcmp (dp->d_name, "..") == 0) {
+        if (strcmp (dp->d_name, ".") == 0 || strcmp (dp->d_name, "..") == 0) {
             // skip self and parent
             continue;
         }

@@ -1,5 +1,5 @@
 #include <QOpenGLFunctions>
-#include <OpenGL/glu.h>
+#include <GL/glu.h>
 
 #include <pthread.h>
 #include <iostream>

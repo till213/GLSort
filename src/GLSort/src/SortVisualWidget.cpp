@@ -25,7 +25,7 @@
 #include <float.h>	// for DBL_MAX
 
 #include <QOpenGLFunctions>
-#include <OpenGL/glu.h>
+#include <GL/glu.h>
 
 #include <Kernel/Array.h>
 #include <Kernel/Camera.h>

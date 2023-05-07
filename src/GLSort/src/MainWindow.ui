@@ -54,9 +54,6 @@
    <property name="text">
     <string>&amp;Quit</string>
    </property>
-   <property name="shortcut">
-    <string>Backspace</string>
-   </property>
   </action>
  </widget>
  <customwidgets>

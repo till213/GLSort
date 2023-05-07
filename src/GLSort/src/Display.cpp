@@ -1,5 +1,5 @@
 #include <QOpenGLFunctions>
-#include <OpenGL/glu.h>
+#include <GL/glu.h>
 #include <math.h>
 
 #include <Kernel/Array.h>

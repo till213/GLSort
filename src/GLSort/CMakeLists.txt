@@ -1,5 +1,3 @@
-cmake_minimum_required(VERSION 3.20)
-
 set(PROJECT_SOURCES
     src/DelayBar.h src/DelayBar.cpp
     src/Display.h src/Display.cpp
@@ -55,6 +53,7 @@ target_link_libraries(GLSort
         Qt${QT_VERSION_MAJOR}::Widgets
         Qt${QT_VERSION_MAJOR}::OpenGL
         Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+        -lGLU
         Sort::Kernel
 )
 
