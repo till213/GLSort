@@ -17,6 +17,27 @@ set(PROJECT_SOURCES
     src/MainWindow.cpp
     src/MainWindow.h
     src/MainWindow.ui
+    src/Array.h src/Array.cpp
+    src/Camera.h src/Camera.cpp
+    src/Delay.h src/Delay.cpp
+    src/DelayBar.h src/DelayBar.cpp
+    src/DirWalk.h src/DirWalk.cpp
+    src/Display.h src/Display.cpp
+    src/GLSort.cpp
+    src/GlutCallbacks.h src/GlutCallbacks.cpp
+    src/Registry.h src/Registry.cpp
+    src/Resources.h src/Resources.cpp
+    src/Sort.h src/Sort.cpp
+    src/Stat.h src/Stat.cpp
+    src/Text.h src/Text.cpp
+    src/TextScroller.h src/TextScroller.cpp
+    src/Time.h src/Time.cpp
+    src/TrackBall.h src/TrackBall.cpp
+    src/Translation.h src/Translation.cpp
+    src/Utils.h src/Utils.cpp
+    src/Version.h src/Version.cpp
+    src/Visual.h src/Visual.cpp
+    src/WinInfo.h src/WinInfo.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
