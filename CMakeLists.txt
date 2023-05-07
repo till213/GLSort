@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(GLSort VERSION 0.1 LANGUAGES CXX)
+project(
+    GLSort
+    VERSION 0.1
+    DESCRIPTION "Visualisation of various sort algorithms with OpenGL"
+    HOMEPAGE_URL "https://github.com/till213/GLSort"
+    LANGUAGES CXX
+)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -88,3 +94,6 @@ install(TARGETS GLSort
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(GLSort)
 endif()
+
+# Plugins
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/SortAlgorithms)
