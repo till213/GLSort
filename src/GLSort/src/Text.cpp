@@ -5,7 +5,7 @@
 #include <iostream>		// for cerr
 
 #include "WinInfo.h"
-#include "Time.h"
+#include "Timer.h"
 #include "Text.h"
 
 typedef enum {

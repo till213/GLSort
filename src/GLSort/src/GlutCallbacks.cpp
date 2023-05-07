@@ -15,7 +15,7 @@
 #include "Resources.h"
 #include "Text.h"
 #include "TextScroller.h"
-#include "Time.h"
+#include "Timer.h"
 #include "Visual.h"
 #include "WinInfo.h"
 #include "GlutCallbacks.h"

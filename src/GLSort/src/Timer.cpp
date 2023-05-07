@@ -1,6 +1,6 @@
-#include "Time.h"
+#include "Timer.h"
 
 struct timeb curTime, oldTime;	// for timing
 
 /** time difference between each calculated frame [in ms] */
-GLdouble dt;			// time difference
+double dt;			// time difference

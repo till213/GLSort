@@ -1,13 +1,11 @@
-#ifndef __TIME_H_
-#define __TIME_H_
+#ifndef __TIMER_H_
+#define __TIMER_H_
 
-#include <QOpenGLFunctions>
 #include <sys/timeb.h>		// for definition of timeb
-
 
 extern struct timeb curTime, oldTime;	// for timing
 
 /** time difference between each calculated frame [in ms] */
-extern GLdouble dt;			// time difference
+extern double dt;			// time difference
 
-#endif
+#endif // __TIMER_H_

@@ -2,7 +2,7 @@
 #include <string.h>	// for strcpy()
 
 #include "Text.h"
-#include "Time.h"
+#include "Timer.h"
 #include "WinInfo.h"
 #include "TextScroller.h"
 

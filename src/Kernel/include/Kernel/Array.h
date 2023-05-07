@@ -2,14 +2,11 @@
 #define __ARRAY_H_
 
 #include <vector>
-// TODO Previously the size was hardcoded (in the original "glsort"), but
-// the Array implementation seems to allow for arbitrary array sizes
-#define ARRAYSIZE 32
 
 class Array {
 
  public:
-  Array (const int size = 32);
+  Array (int size = 32);
   virtual ~Array (void) {};
 
   void setElem (const int val, const int pos);

@@ -9,7 +9,7 @@
 // global
 Array array;
 
-Array::Array (const int size) {
+Array::Array(int size) {
 
   int i;
 

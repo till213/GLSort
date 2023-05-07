@@ -16,26 +16,30 @@ GLdouble curTheta;   /* position of the camera */
 GLdouble curPhi;
 GLdouble curDist;
 
+#include <Kernel/Array.h>
+
 void display(void) {
 
-  GLdouble xEye,
-    yEye,
-    zEye;
+    const std::size_t arraySize = array.getSize();
 
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GLdouble xEye,
+        yEye,
+        zEye;
 
-  /* position the camera (the "eye") */
-  glLoadIdentity();
-  xEye = (GLdouble) (curDist * cos (INV_PI * (double) curTheta) * sin (INV_PI * (double) curPhi));
-  yEye = (GLdouble) (curDist * sin (INV_PI * (double) curTheta)) + (GLdouble) ARRAYSIZE / 2.0;
-  zEye = (GLdouble) (curDist * cos (INV_PI * (double) curTheta) * cos (INV_PI * (double) curPhi));
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-  gluLookAt (xEye, yEye, zEye,
-	     0.0, (GLdouble) ARRAYSIZE / 2.0, 0.0,
-	     0.0, 1.0, 0.0); 
-   
-  drawScene (ARRAYSIZE);
+    /* position the camera (the "eye") */
+    glLoadIdentity();
+    xEye = (GLdouble) (curDist * cos (INV_PI * (double) curTheta) * sin (INV_PI * (double) curPhi));
+    yEye = (GLdouble) (curDist * sin (INV_PI * (double) curTheta)) + (GLdouble) arraySize / 2.0;
+    zEye = (GLdouble) (curDist * cos (INV_PI * (double) curTheta) * cos (INV_PI * (double) curPhi));
 
-  //glutSwapBuffers();
+    gluLookAt (xEye, yEye, zEye,
+              0.0, (GLdouble) arraySize / 2.0, 0.0,
+              0.0, 1.0, 0.0);
+
+    drawScene (arraySize);
+
+    //glutSwapBuffers();
 
 }

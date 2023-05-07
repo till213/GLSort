@@ -10,10 +10,11 @@ set(PROJECT_SOURCES
     src/Resources.h src/Resources.cpp
     src/GLSort.cpp
     src/GlutCallbacks.h src/GlutCallbacks.cpp
+    src/SortVisualWidget.h src/SortVisualWidget.cpp
     src/Text.h src/Text.cpp
     src/Text.h src/Text.cpp
     src/TextScroller.h src/TextScroller.cpp
-    src/Time.h src/Time.cpp
+    src/Timer.h src/Timer.cpp
     src/Translation.h src/Translation.cpp
     src/Visual.h src/Visual.cpp
     src/Visual.h src/Visual.cpp
@@ -27,7 +28,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET GLSort APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
+#                 ${CMAKE_CURRENT_LIST_DIR}/android)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
@@ -35,7 +36,7 @@ else()
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_LIST_DIR}/android")
     else()
         add_executable(GLSort
             ${PROJECT_SOURCES}
@@ -43,6 +44,12 @@ else()
     endif()
 endif()
 
+target_include_directories(GLSort
+    INTERFACE
+
+    PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/src
+)
 target_link_libraries(GLSort
     PRIVATE
         Qt${QT_VERSION_MAJOR}::Widgets
