@@ -25,7 +25,7 @@
 #include <float.h>	// for DBL_MAX
 
 #include <QOpenGLFunctions>
-#ifdef __MACH__
+#ifdef Q_OS_MAC
 #include <OpenGL/glu.h>
 #else
 #include <GL/glu.h>
