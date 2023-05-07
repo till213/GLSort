@@ -2,7 +2,7 @@
 #include <dirent.h>
 #include <iostream>	// for cerr
 
-#include "dirWalk.h"
+#include "DirWalk.h"
 
 /**
    * apply 'fcn' to all files in 'directory'
